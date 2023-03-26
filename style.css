@@ -1,0 +1,27 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.imagen-logo{
+    width: 120px;
+}
+
+.img-auto{
+
+    width: 50vh;
+    height: 90vh;
+}
+
+.carousel-altura{
+    height: 2rem;
+}
+.texto-carrusel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: aliceblue;
+}
