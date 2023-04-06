@@ -19,50 +19,50 @@
 <body>
 
 
-    <header>
 
 
 
-        <div class="container-fluid background-nav borde my-5">
 
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid d-flex">
-                    <img class="imagen-logo img-fluid img-thumbnail align-content-center"
-                        src="imagenes/seguro-de-auto.png" alt="atomo">
-                    <a href="https://www.flaticon.es/iconos-gratis/coche" title="coche iconos"></a>
-                    <a class="navbar-brand mx-5 titulo-nav" href="#">SEGUROS LA ANONIMA</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+    <div class="container-fluid background-nav borde">
 
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid d-flex">
+                <img class="imagen-logo img-fluid img-thumbnail align-content-center" src="imagenes/seguro-de-auto.png"
+                    alt="atomo">
+                <a href="https://www.flaticon.es/iconos-gratis/coche" title="coche iconos"></a>
+                <a class="navbar-brand mx-5 titulo-nav" href="#">SEGUROS LA ANONIMA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-                            <a class="nav-link" aria-current="page" href="./paginas/servicios.html">Servicios</a>
-                            <a class="nav-link" href="./paginas/productos.html">Nuestros productos</a>
-                            <a class="nav-link" href="./paginas/servicios.html#ubicacion">Contacto</a>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="./paginas/servicios.html">Servicios</a>
+                        <a class="nav-link" href="./paginas/productos.html">Nuestros productos</a>
+                        <a class="nav-link" href="./paginas/servicios.html#ubicacion">Contacto</a>
 
 
-                        </div>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
 
 
-        </div>
-    </header>
+    </div>
+
 
 
     <main>
         <section>
 
             <!-- Carrusel -->
-            <div class="container">
-                <div id="carouselExampleDark" class="carousel carousel-dark slide ">
+            <div class="container-lg d-flex justify-content-center">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide col-6 ">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1">
@@ -83,7 +83,7 @@
                     <div class="carousel-inner">
 
                         <div class="carousel-item active" data-bs-interval="10000">
-                            <img src="imagenes/bora.png" class="d-block w-100 img-auto img-fluid
+                            <img src="imagenes/cruze.png" class="d-block w-100 img-auto img-fluid
                             foto-carrusel" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="posicion"><span class="texto-carrusel
@@ -137,30 +137,19 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
         </section>
         <section>
             <div class="container">
                 <div class="cotizar my-5">
-                    <h2>Cotizar vehiculo on-line</h2>
-                    <h2 class="my-3">Ingresar datos:</h2>
+                    <h4 class="my-5">Cotizar vehiculo on-line</h4>
+                    <h3 class="my-3">Ingresar datos:</h3>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                        <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
                     </div>
                 </div>
                 <div class="row my-5">
@@ -188,10 +177,11 @@
                     </div>
                 </div>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
+            
+            <div class="d-grid  col-12 d-flex justify-content-center">
                 <button class="btn btn-primary" type="button">Cotizar</button>
-                
-              </div>
+
+            </div>
 
         </section>
         <section>
@@ -220,7 +210,7 @@
                     </div>
                 </div>
 
-                <div class="container d-flex justify-content-around align-items-center contenedor-clientes">
+                <div class="container d-flex justify-content-between px-5 contenedor-clientes">
                     <div class="">
                         <img src="imagenes/icono-gpro.png" alt="">
                     </div>
@@ -311,6 +301,6 @@
 
 
 
-    <script src="cotizador.js"></script>
-
+     <script src="cotizador.js"></script>
+ 
 </body>

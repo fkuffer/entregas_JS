@@ -61,46 +61,64 @@ alert("🙋‍♂️Sr." + " " + nombre + " " + "Le damos la bienvenida a nuestr
 alert("✍️ Para cotizar su seguro debera seguir los siguientes pasos:");
 }
 
-let marca = prompt("🚗Ingresar la marca del vehiculo: \n1-VolksWagen: \n2-Fiat: \n3-Chevrolet:");
+/* let marca = prompt("🚗Ingresar la marca del vehiculo: \n1-VolksWagen: \n2-Fiat: \n3-Chevrolet:"); */
 let precioVehiculo=parseInt(prompt("💵Ingrese el precio comercial de su vehiculo: "));
 let factorModelo = "";
 
+/* let marcaIngresada = prompt("Ingrese marca del vehiculo:") */
+
+
+
 /* Clasificacion por marca */
 
-switch (marca){
-
-    case "1":
+class Autos{
+    constructor(marca, modelo,altaGama){
+        this.marca=marca
+        this.modelo=modelo
+        this.altaGama=altaGama
         
-     modelo=prompt("✍️Ingresar el modelo: \n1-Bora \n2-Amarok \n3-Fox \n4-Passat \n5-Trend");
-        if(modelo == "1" || modelo == "4"){
-            console.log(factorModelo=(precioVehiculo*0.003));
-            
-        }
-        
-        break;
-    
-    case "2":
-        
-      modelo=prompt("✍️Ingresar el modelo: \n1-Fiorino \n2-Fiat 500 \n3-Cronos \n4-Punto");
+    }
+}
 
-     if(modelo == "2" || modelo == "3"){
-        console.log(factorModelo=(precioVehiculo*0.003));
-    
-        }
+const modeloAutos = [];
 
-        break;
+modeloAutos.push(new Autos ("VOLKSWAGEN","BORA",true))
+modeloAutos.push(new Autos ("VOLKSWAGEN","AMAROK",true))
+modeloAutos.push(new Autos ("VOLKSWAGEN","FOX", false))
+modeloAutos.push(new Autos ("VOLKSWAGEN","PASSAT", true))
+modeloAutos.push(new Autos ("VOLKSWAGEN","TREND",false))
 
-    case "3":
-        
-     modelo=prompt("✍️Ingresar el modelo: \n1-Cruze \n2-Astra \n3-Camaro \n4-Blazer \n5-Apache");
+modeloAutos.push(new Autos ("FIAT","FIORINO", false))
+modeloAutos.push(new Autos ("FIAT","500", true))
+modeloAutos.push(new Autos ("FIAT","CRONOS", true))
+modeloAutos.push(new Autos ("FIAT","PUNTO",false))
+modeloAutos.push(new Autos ("FIAT","TREND", true))
 
-     if(modelo == "1" || modelo == "3"){
-          console.log(factorModelo=(precioVehiculo*0.003));
-         
-        }
+modeloAutos.push(new Autos ("CHEVROLET","CRUZE", true))
+modeloAutos.push(new Autos ("CHEVROLET","ASTRA", false))
 
-        break;
+modeloAutos.push(new Autos ("CHEVROLET","CAMARO", true))
+modeloAutos.push(new Autos ("CHEVROLET","BLAZER", true))
+modeloAutos.push(new Autos ("CHEVROLET","APACHE", false))
 
+let entrada = prompt(("✍️Ingresar el modelo:") + ("\n Volkswagen")+("\n1-Bora \n2-Amarok \n3-Fox \n4-Passat \n5-Trend") +  ("\n Fiat") + (" \n6-Fiorino \n7-Fiat 500 \n8-Cronos \n9-Punto") +  ("\n Chevrolet") + (" \n10-Cruze \n11-Astra \n12-Camaro \n13-Blazer \n14-Apache"), ("Ingresar modelo 'palabras'"));
+
+
+function ingreso(auto, marcaIngresada) {
+    return auto.find((el) => el.modelo === marcaIngresada.toUpperCase());
+}
+let marcaComparada = ingreso(modeloAutos, entrada);
+console.log(marcaComparada);
+
+/* function gama() { */
+
+
+if(marcaComparada.altaGama === true){
+    console.log(factorModelo=(precioVehiculo*0.003));
+    console.log("Alta gama");
+}else{
+    console.log(factorModelo=(precioVehiculo*0.002));
+    console.log("No gama");
 
 }
 
