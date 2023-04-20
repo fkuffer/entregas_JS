@@ -28,6 +28,8 @@
     -Preguntar lugar de residencia( CABA o PBA)
     -Preguntar KM estimados x mes.
 
+    Se agregaron arrays para marcas y modelos.
+
 
 
 */
@@ -69,7 +71,7 @@ let factorModelo = "";
 
 
 
-/* Clasificacion por marca */
+/* Clasificacion por marca/modelo */
 
 class Autos{
     constructor(marca, modelo,altaGama){
@@ -110,7 +112,7 @@ function ingreso(auto, marcaIngresada) {
 let marcaComparada = ingreso(modeloAutos, entrada);
 console.log(marcaComparada);
 
-/* function gama() { */
+
 
 
 if(marcaComparada.altaGama === true){
