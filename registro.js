@@ -15,6 +15,7 @@ class FormularioRegistro {
 
 
 let formularioRegistro = document.querySelector("#formulario-registro")
+const registrado=[]
 
 formularioRegistro.addEventListener("submit", function (e) {
     e.preventDefault()
@@ -23,12 +24,11 @@ formularioRegistro.addEventListener("submit", function (e) {
     let emailIngresado = document.querySelector("#email-ingresado")
     let passwordIngresado = document.querySelector("#password-ingresado")
     
-    const registrado=[]
     registrado.push(new FormularioRegistro(nombreIngresado.value, apellidoIngresado.value, emailIngresado.value, passwordIngresado.value)) 
     console.log(registrado);
     let regisradosJSON=JSON.stringify(registrado)
     localStorage.setItem('usuarios', regisradosJSON)
-    
+    formularioRegistro.reset()
     
 })
 
