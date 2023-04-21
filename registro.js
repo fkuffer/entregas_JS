@@ -32,5 +32,35 @@ formularioRegistro.addEventListener("submit", function (e) {
     
 })
 
+/* Validacion ingreso */
+
+
+let usuario=document.querySelector("#nombre")
+let pass=document.querySelector("#password")
+
+let formularioIngreso = document.querySelector("#formulario")
+formularioIngreso.addEventListener("submit", function (e) {
+    e.preventDefault()
+    if ((nombre == nombreIngresado) && (pass == passwordIngresado)){
+        alert("exito")
+        document.createElement("p")
+        let acceso=document.getElementById("registro-ok")
+        acceso.innerHTML="Ingreso exitoso"
+        document.appendChild(acceso)
+    }else{
+        document.createElement("p")
+        let acceso=document.getElementById("registro-ok")
+        acceso.innerHTML="Error en datos ingresados"
+    
+    }
+         
+    
+})
+    
+
+
+
+    
+
 
 
