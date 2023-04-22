@@ -1,24 +1,29 @@
-const regisradosJSON = document.querySelector("#nombre-ingresado")
-let nombreRecuperado = JSON.parse(regisradosJSON)
-console.log(nombreRecuperado);
-let usuario=document.querySelector("#nombre")
-let pass=document.querySelector("#password")
+ 
 
-let formularioIngreso = document.querySelector("#formulario")
+const formularioIngreso = document.querySelector("#formulario")
 formularioIngreso.addEventListener("submit", function (e) {
-    e.preventDefault()
-    if ((nombreRecuperado.nombreIngresado == usuario) && (nombreRecuperado.passwordIngresado == pass)){
-        alert("exito")
-        document.createElement("p")
-        let acceso=document.getElementById("registro-ok")
-        acceso.innerHTML="Ingreso exitoso"
-        document.appendChild(acceso)
-    }else{
-        document.createElement("p")
-        let acceso=document.getElementById("registro-ok")
-        acceso.innerHTML="Error en datos ingresados"
+    let pass=document.querySelector("#password").value
+    let usuario=document.querySelector("#nombre").value
+
     
-    }
+    const nombreRecuperado = JSON.parse(localStorage.getItem('usuarios')) || []
+    console.log(nombreRecuperado);
+
+
+    const validacionUsuario=nombreRecuperado.find(el => el.nombreIngresado === usuario)
+    /* const validacionPassword=nombreRecuperado.find(el => el.passwordIngresado === pass) */
+    
+    
+        if(validacionUsuario){
+            return alert("ingreso exitoso")
+        }else{
+             alert("usuario incorrecto")
+        }
+
+    
+
+    
+    
          
     
 })
