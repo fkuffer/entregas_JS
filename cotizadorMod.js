@@ -33,14 +33,15 @@
 
 
 */
-let factorModelo = "";
+let factorModelo = 0.01;
+let factorModeloGama = 0.02;
+let factorAnio = 0.01;
+let factorAnioNuevo = 0.02;
+let factorGuardaGarage = 0.01;
+let factorGuardaCalle = 0.02;
+let factorResidenciaCaba = 0.01;
+let factorResidenciaPBA = 0.02;
 
-const nombre=document.querySelector("#nombre")
-const valorComercial=document.querySelector("#valor")
-const fabricacion=document.querySelector("#fabricacion")
-const kilometros=document.querySelector("#kilometros")
-const guarderis=document.querySelector("#guarderis")
-const residencia=document.querySelector("#residencia")
 
 class Autos{
     constructor(marca, modelo,altaGama){
@@ -74,37 +75,94 @@ modeloAutos.push(new Autos ("CHEVROLET","BLAZER", true))
 modeloAutos.push(new Autos ("CHEVROLET","APACHE", false))
 
 
-/* DOM Creacion de select */
+/*****************Eventos del DOM *************** */
 
 let modeloElegido=document.querySelector("#modelo")
 let select = document.createElement("select")
 for (const autos of modeloAutos) {
     
-    select.innerHTML+=`<option selected>Modelo</option>
-    <option class="form-control col p-5" value=''>${autos.modelo}</option> `
+    select.innerHTML+=`<option selected></option>
+    <option class="form-control col p-5" value='${autos.modelo}  ${autos.altaGama}'>${autos.modelo}</option> `
     modeloElegido.appendChild(select)
-    modeloElegido.onchange = () => {console.log(select.autos.modelo)};
+    modeloElegido.onchange = () => {console.log(select.value)
+        
+    
+    
+    };
 }
+
+
 
 
 let marcaElegida=document.querySelector("#marca")
 let selectMarca = document.createElement("select")
 for (const autos of modeloAutos) {
     
-    selectMarca.innerHTML+=`<option selected>Marca</option>
-    <option class="form-control col p-5" value=''>${autos.marca}</option> `
+    selectMarca.innerHTML+=`<option selected></option>
+    <option class="form-control col p-5" value='${autos.marca}'>${autos.marca}</option> `
     marcaElegida.appendChild(selectMarca)
+    marcaElegida.onchange = () => {console.log(selectMarca.value)};
     
-    marcaElegida.onchange = () => {console.log(autos.marca)};
-}
+} 
+
+
+let valorComercial=document.querySelector("#valor")
+const valores = valorComercial.onchange = () => {console.log(valorComercial.value)};
+
+console.log(valores.valorComercial);
+
+
+const nombre=document.querySelector("#nombre")
+const nombreApellido = nombre.onchange = () => {console.log(nombre.value)};
+
+console.log(nombreApellido.nombre);
+
+
+const fabricacion=document.querySelector("#fabricacion")
+const fabricacionAnio = fabricacion.onchange = () => {console.log(fabricacion.value)};
+
+console.log(fabricacionAnio.fabricacion);
+
+
+const kilometros=document.querySelector("#kilometros")
+const kilometrosHechos = kilometros.onchange = () => {console.log(kilometros.value)};
+
+console.log(kilometrosHechos.kilometros);
 
 
 
-    
-    
+const guarderia=document.querySelector("#guarderia")
+const guardaAuto = guarderia.onchange = () => {if(guarderia.value === "garage"){
+    let cotizar=factorGuardaGarage*parseInt(valorComercial.value)
+    console.log(cotizar);
+}else{
+let cotizarDos=factorGuardaCalle*parseInt(valorComercial.value)
+    console.log(cotizarDos);}
+};
 
-console.log(marcaElegida.children[0].value);
-console.log(modeloElegido.children[0].value);
+/* if(guardaAuto.guarderia == "Garaje"){
+    console.log(factorGuardaGarage); */
+
+
+
+const residencia=document.querySelector("#residencia")
+const residenciaAuto = residencia.onchange = () => {console.log(residencia.value)};
+
+console.log(residenciaAuto.residencia);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Logica calculo presupuesto */
 
 /* function ingreso(auto, marcaAuto) {
@@ -112,7 +170,7 @@ console.log(modeloElegido.children[0].value);
 }
 let marcaComparada = ingreso(modeloAutos, marca);
 console.log(marcaComparada);
- */
+*/
 
 /* 
 let altaGama=new Autos(true, false)
