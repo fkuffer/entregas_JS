@@ -34,37 +34,30 @@
 
 */
 
-/* Validacion usuario */
 
-let usuarioRegistrado = "Fede";
-let usuario = false
+const nombre=document.querySelector("#nombre")
+const valorComercial=document.querySelector("#valor")
+const marcaModelo=document.querySelector("#marca_modelo")
+const fabricacion=document.querySelector("#fabricacion")
+const kilometros=document.querySelector("#kilometros")
+const guarderis=document.querySelector("#guarderis")
+const residencia=document.querySelector("#residencia")
 
+const modeloAutos = [];
+
+for (const modeloMarca of modeloAutos) {
+
+    let option = document.createElement("option")
+    option.innerHTML=modeloMarca
+    marcaModelo.appendChild(option)
+    
+}
  
-for(i=3; i>=0 ; i--){ 
-let usuarioIngresado = prompt("🔒 Ingresar usuario: ");
-if(usuarioIngresado === usuarioRegistrado){
-   alert(" 👍 Datos correctos");
-   usuario = true;
-   ejecutar();
-    break;
-}else{
-    alert("👎 Error, datos incorrectos, le quedan"+ " " + i + " "+ "intentos para iniciar sesion");
-    usuario == false;
-}
-}
 
 
-function ejecutar(){
 
-let nombre = prompt("✍️ Ingrese su nombre y apellido: ");
 
-if (nombre != ""){
-alert("🙋‍♂️Sr." + " " + nombre + " " + "Le damos la bienvenida a nuestro cotizador de seguros");
-alert("✍️ Para cotizar su seguro debera seguir los siguientes pasos:");
-}
-
-/* let marca = prompt("🚗Ingresar la marca del vehiculo: \n1-VolksWagen: \n2-Fiat: \n3-Chevrolet:"); */
-let precioVehiculo=parseInt(prompt("💵Ingrese el precio comercial de su vehiculo: "));
+/* let precioVehiculo=parseInt(prompt("💵Ingrese el precio comercial de su vehiculo: ")); */
 let factorModelo = "";
 
 /* let marcaIngresada = prompt("Ingrese marca del vehiculo:") */
@@ -82,7 +75,7 @@ class Autos{
     }
 }
 
-const modeloAutos = [];
+console.log(modeloAutos);
 
 modeloAutos.push(new Autos ("VOLKSWAGEN","BORA",true))
 modeloAutos.push(new Autos ("VOLKSWAGEN","AMAROK",true))
@@ -96,16 +89,16 @@ modeloAutos.push(new Autos ("FIAT","CRONOS", true))
 modeloAutos.push(new Autos ("FIAT","PUNTO",false))
 modeloAutos.push(new Autos ("FIAT","TREND", true))
 
+
 modeloAutos.push(new Autos ("CHEVROLET","CRUZE", true))
 modeloAutos.push(new Autos ("CHEVROLET","ASTRA", false))
-
 modeloAutos.push(new Autos ("CHEVROLET","CAMARO", true))
 modeloAutos.push(new Autos ("CHEVROLET","BLAZER", true))
 modeloAutos.push(new Autos ("CHEVROLET","APACHE", false))
 
-let entrada = prompt(("✍️Ingresar el modelo:") + ("\n Volkswagen")+("\n1-Bora \n2-Amarok \n3-Fox \n4-Passat \n5-Trend") +  ("\n Fiat") + (" \n6-Fiorino \n7-Fiat 500 \n8-Cronos \n9-Punto") +  ("\n Chevrolet") + (" \n10-Cruze \n11-Astra \n12-Camaro \n13-Blazer \n14-Apache"), ("Ingresar modelo 'palabras'"));
+/* let entrada = prompt(("✍️Ingresar el modelo:") + ("\n Volkswagen")+("\n1-Bora \n2-Amarok \n3-Fox \n4-Passat \n5-Trend") +  ("\n Fiat") + (" \n6-Fiorino \n7-Fiat 500 \n8-Cronos \n9-Punto") +  ("\n Chevrolet") + (" \n10-Cruze \n11-Astra \n12-Camaro \n13-Blazer \n14-Apache"), ("Ingresar modelo 'palabras'"));
 
-
+ */
 function ingreso(auto, marcaIngresada) {
     return auto.find((el) => el.modelo === marcaIngresada.toUpperCase());
 }
@@ -127,7 +120,7 @@ if(marcaComparada.altaGama === true){
 
 /* Clasificacion por año de fabricacion */
 
-let anoFabricacion = prompt("🗓️Ingrese el año de fabricacion del vehiculo: ");
+/* let anoFabricacion = prompt("🗓️Ingrese el año de fabricacion del vehiculo: "); */
 
 if (anoFabricacion >= 1990 && anoFabricacion <= 2000){
     console.log(factorFab = (precioVehiculo*0.001));
@@ -148,7 +141,7 @@ if (anoFabricacion >= 2023){
 
 /* Clasificacion por KM recorrido por mes */
 
-kilometrosMes=parseInt(prompt("🛣️Ingrese los kilometros que realiza por mes: "));
+/* kilometrosMes=parseInt(prompt("🛣️Ingrese los kilometros que realiza por mes: ")); */
 
 if (kilometrosMes >= 1000){
     console.log(factorkm = (precioVehiculo*0.002));
@@ -158,8 +151,8 @@ if (kilometrosMes >= 1000){
 
 /* Clasificacion guarderia vehiculo */
 
-guarderia = prompt("🌙Donde guarda el vehiculo cuando no lo utiliza: \n1-Garage \n2-Calle ");
-
+/* guarderia = prompt("🌙Donde guarda el vehiculo cuando no lo utiliza: \n1-Garage \n2-Calle ");
+ */
 if (guarderia == 1){
     console.log(factorGuarda=(precioVehiculo*0.002));
 }else{
@@ -167,8 +160,8 @@ if (guarderia == 1){
 }
 
 /* Lugar de residencia */
-
-residencia=prompt("🏠Ingrese lugar de residencia: \n1-CABA  \n2-PBA");
+/* 
+residencia=prompt("🏠Ingrese lugar de residencia: \n1-CABA  \n2-PBA"); */
 
 if(residencia == 1){
     console.log(factorResidencia = (precioVehiculo*0.0005));
@@ -184,7 +177,7 @@ function presupuesto (){
  presupuesto();
 let calculoIVA = presupuesto()*1.21
 
-alert("💵 La cotizacion del seguro de su vehiculo es de $: " + " " + presupuesto() + " " + "No incuye Iva");
+/* alert("💵 La cotizacion del seguro de su vehiculo es de $: " + " " + presupuesto() + " " + "No incuye Iva");
 alert("💵 Su cotizacion final incluyendo IVA (21%) es de $: " + " " + calculoIVA);
-}
 
+ */

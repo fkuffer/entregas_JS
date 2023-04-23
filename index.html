@@ -146,40 +146,58 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+                        <input id="nombre" type="text" class="form-control" placeholder="Nombre y apellido"
+                            aria-label="First name">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
+                        <input id="valor" type="text" class="form-control" placeholder="Valor comercial vehiculo"
+                            aria-label="Last name">
+                    </div>
+                </div>
+
+                <div class="row my-5">
+                    <div class="col-6">   
+                        <div id="modelo"></div>
+                    </div>
+                    <div class="col-6">   
+                        <div id="marca"></div>
+                    </div>
+                       
+                </div>
+
+
+                <div class="row my-5">
+                    <div class="col">
+                        <input id="fabricacion" type="text" class="form-control" placeholder="Año de fabricacion">
+                    </div>
+                    <div class="col">
+                        <input id="kilometros" type="text" class="form-control" placeholder="Km realizados por mes">
                     </div>
                 </div>
                 <div class="row my-5">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Marca del vehiculo">
+                        <select id="guarderia" class="form-select" aria-label="Default select example"
+                            aria-placeholder="Guarda vehiculo">
+                            <option selected>Guarderia vehiculo</option>
+                            <option value="1">Garage</option>
+                            <option value="2">Calle</option>
+
+                        </select>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Modelo del vehiculo">
-                    </div>
-                </div>
-                <div class="row my-5">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Año de fabricacion">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Km realizados por mes">
-                    </div>
-                </div>
-                <div class="row my-5">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Donde guarda su vehiculo">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Lugar de residencia (PBA/CABA)">
+                        <select id="residencia" class="form-select" aria-label="Default select example"
+                            aria-placeholder="Residencia">
+                            <option selected>Residencia propietario</option>
+                            <option value="1">Ciudad buenos aires</option>
+                            <option value="2">Provincia buenos aires</option>
+
+                        </select>
                     </div>
                 </div>
             </div>
-            
+
             <div class="d-grid  col-12 d-flex justify-content-center">
-                <button class="btn btn-primary" type="button">Cotizar</button>
+                <button id="btn-cotizar" class="btn btn-primary" type="button">Cotizar</button>
 
             </div>
 
@@ -297,10 +315,11 @@
 
 
 
+    <script src="cotizadorMod.js"></script>
+    <!-- <script src="ingreso.js"></script> -->
 
 
 
 
-     <script src="cotizador.js"></script>
- 
+
 </body>

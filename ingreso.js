@@ -11,13 +11,14 @@ formularioIngreso.addEventListener("submit", function (e) {
 
 
     const validacionUsuario=nombreRecuperado.find(el => el.nombreIngresado === usuario)
-    /* const validacionPassword=nombreRecuperado.find(el => el.passwordIngresado === pass) */
+    const validacionPassword=nombreRecuperado.find(el => el.passwordIngresado === pass)
     
     
-        if(validacionUsuario){
+        if(validacionUsuario && validacionPassword){
+            window.location.href='index.html'
             return alert("ingreso exitoso")
         }else{
-             alert("usuario incorrecto")
+            alert("usuario incorrecto")
         }
 
     
