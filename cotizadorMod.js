@@ -94,8 +94,6 @@ for (const autos of modeloAutos) {
 }
 
 
-
-
 let marcaElegida=document.querySelector("#marca")
 let selectMarca = document.createElement("select")
 for (const autos of modeloAutos) {
@@ -120,18 +118,23 @@ const nombreApellido = nombre.onchange = () => {console.log(nombre.value)};
 console.log(nombreApellido.nombre);
 
 
+/* *****Cotizar por Anio fabricacion*************** */
 const fabricacion=document.querySelector("#fabricacion")
 const fabricacionAnio = fabricacion.onchange = () => {if(parseInt(fabricacion.value) <= 2010 ){
-    let cotizarAnio=factorAnio*parseInt(valorComercial.value)
-    console.log(cotizarAnio);
+    let cotizarAnio = () => {factorAnio*parseInt(valorComercial.value)}
+    return cotizarAnio
+        
+    
+    
 }else{parseInt(fabricacion.value >= 2010)
-let cotizarAnioDos=factorAnioNuevo*parseInt(valorComercial.value)
-    console.log(cotizarAnioDos);
+    let cotizarAnioDos=() => {factorAnioNuevo*parseInt(valorComercial.value)}
+    return cotizarAnioDos
 }
 }
 
 
 
+/* *****Cotizar por kilometros realizados*************** */
 
 const kilometros=document.querySelector("#kilometros")
 const kilometrosHechos = kilometros.onchange = () => {if(parseInt(kilometros.value) <= 500 ){
@@ -145,32 +148,33 @@ let cotizarKmAlto=factorKmAlto*parseInt(valorComercial.value)
 
 
 
+/* *****Cotizar por lugar donde guarda auto*************** */
 
 const guarderia=document.querySelector("#guarderia")
 const guardaAuto = guarderia.onchange = () => {if(guarderia.value === "garage"){
     let cotizar=factorGuardaGarage*parseInt(valorComercial.value)
     console.log(cotizar);
 }else{
-let cotizarDos=factorGuardaCalle*parseInt(valorComercial.value)
+    let cotizarDos=factorGuardaCalle*parseInt(valorComercial.value)
     console.log(cotizarDos);}
 };
 
-/* if(guardaAuto.guarderia == "Garaje"){
-    console.log(factorGuardaGarage); */
 
 
+/* *****Cotizar por residencia titular*************** */
 
 const residencia=document.querySelector("#residencia")
 const residenciaAuto = residencia.onchange = () => {if(residencia.value === "CABA"){
     let cotizarResi=factorResidenciaCaba*parseInt(valorComercial.value)
     console.log(cotizarResi);
 }else{
-let cotizarResiDos=factorResidenciaPBA*parseInt(valorComercial.value)
+    let cotizarResiDos=factorResidenciaPBA*parseInt(valorComercial.value)
     console.log(cotizarResiDos);}};
+    
+ 
 
-console.log(residenciaAuto.residencia);
-
-
+let cotizacionTotal =""
+console.log(cotizacionTotal);
 
 
 
