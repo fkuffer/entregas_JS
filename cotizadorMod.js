@@ -41,6 +41,8 @@ let factorGuardaGarage = 0.01;
 let factorGuardaCalle = 0.02;
 let factorResidenciaCaba = 0.01;
 let factorResidenciaPBA = 0.02;
+let factorKm = 0.02;
+let factorKmAlto = 0.03;
 
 
 class Autos{
@@ -119,15 +121,28 @@ console.log(nombreApellido.nombre);
 
 
 const fabricacion=document.querySelector("#fabricacion")
-const fabricacionAnio = fabricacion.onchange = () => {console.log(fabricacion.value)};
+const fabricacionAnio = fabricacion.onchange = () => {if(parseInt(fabricacion.value) <= 2010 ){
+    let cotizarAnio=factorAnio*parseInt(valorComercial.value)
+    console.log(cotizarAnio);
+}else{parseInt(fabricacion.value >= 2010)
+let cotizarAnioDos=factorAnioNuevo*parseInt(valorComercial.value)
+    console.log(cotizarAnioDos);
+}
+}
 
-console.log(fabricacionAnio.fabricacion);
+
 
 
 const kilometros=document.querySelector("#kilometros")
-const kilometrosHechos = kilometros.onchange = () => {console.log(kilometros.value)};
+const kilometrosHechos = kilometros.onchange = () => {if(parseInt(kilometros.value) <= 500 ){
+    let cotizarKm=factorKm*parseInt(valorComercial.value)
+    console.log(cotizarKm);
+}else{parseInt(fabricacion.value >= 500)
+let cotizarKmAlto=factorKmAlto*parseInt(valorComercial.value)
+    console.log(cotizarKmAlto);
+}};
 
-console.log(kilometrosHechos.kilometros);
+
 
 
 
@@ -146,7 +161,12 @@ let cotizarDos=factorGuardaCalle*parseInt(valorComercial.value)
 
 
 const residencia=document.querySelector("#residencia")
-const residenciaAuto = residencia.onchange = () => {console.log(residencia.value)};
+const residenciaAuto = residencia.onchange = () => {if(residencia.value === "CABA"){
+    let cotizarResi=factorResidenciaCaba*parseInt(valorComercial.value)
+    console.log(cotizarResi);
+}else{
+let cotizarResiDos=factorResidenciaPBA*parseInt(valorComercial.value)
+    console.log(cotizarResiDos);}};
 
 console.log(residenciaAuto.residencia);
 
