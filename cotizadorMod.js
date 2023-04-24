@@ -109,41 +109,66 @@ for (const autos of modeloAutos) {
 let valorComercial=document.querySelector("#valor")
 const valores = valorComercial.onchange = () => {console.log(valorComercial.value)};
 
-console.log(valores.valorComercial);
+/* console.log(valores.valorComercial); */
 
 
 const nombre=document.querySelector("#nombre")
 const nombreApellido = nombre.onchange = () => {console.log(nombre.value)};
 
-console.log(nombreApellido.nombre);
+/* console.log(nombreApellido.nombre); */
 
 
 /* *****Cotizar por Anio fabricacion*************** */
 const fabricacion=document.querySelector("#fabricacion")
 const fabricacionAnio = fabricacion.onchange = () => {if(parseInt(fabricacion.value) <= 2010 ){
-    let cotizarAnio = () => {factorAnio*parseInt(valorComercial.value)}
-    return cotizarAnio
+    cotfab()
+    
         
     
-    
 }else{parseInt(fabricacion.value >= 2010)
-    let cotizarAnioDos=() => {factorAnioNuevo*parseInt(valorComercial.value)}
-    return cotizarAnioDos
+    cotfabDos()
 }
 }
 
+function cotfab() {
+    let cotUno=factorAnio*parseInt(valorComercial.value)
+    return (cotUno)
+    
+}
+function cotfabDos() {
+    let cotDos=factorAnioNuevo*parseInt(valorComercial.value)
+    return (cotDos)
+    
+}
 
+
+
+
+/* console.log(cotUno);
+console.log(cotDos);
+ */
 
 /* *****Cotizar por kilometros realizados*************** */
 
 const kilometros=document.querySelector("#kilometros")
 const kilometrosHechos = kilometros.onchange = () => {if(parseInt(kilometros.value) <= 500 ){
-    let cotizarKm=factorKm*parseInt(valorComercial.value)
-    console.log(cotizarKm);
+    cotkm()
+
 }else{parseInt(fabricacion.value >= 500)
-let cotizarKmAlto=factorKmAlto*parseInt(valorComercial.value)
-    console.log(cotizarKmAlto);
+    cotkmAlto()
 }};
+
+function cotkm() {
+    let cotizarKm=factorKm*parseInt(valorComercial.value)
+    return (cotizarKm);
+    
+    
+}
+function cotkmAlto() {
+    let cotizarKmAlto=factorKmAlto*parseInt(valorComercial.value)
+    return (cotizarKmAlto);
+}
+
 
 
 
@@ -152,30 +177,54 @@ let cotizarKmAlto=factorKmAlto*parseInt(valorComercial.value)
 
 const guarderia=document.querySelector("#guarderia")
 const guardaAuto = guarderia.onchange = () => {if(guarderia.value === "garage"){
-    let cotizar=factorGuardaGarage*parseInt(valorComercial.value)
-    console.log(cotizar);
+    cotguardaG()
 }else{
-    let cotizarDos=factorGuardaCalle*parseInt(valorComercial.value)
-    console.log(cotizarDos);}
+    cotguardaC()
 };
 
 
+}
+
+function cotguardaG() {
+    let cotizar=factorGuardaGarage*parseInt(valorComercial.value)
+    return (cotizar);
+   
+}
+function cotguardaC() {
+    let cotizarDos=factorGuardaCalle*parseInt(valorComercial.value)
+    return (cotizarDos);
+}
 
 /* *****Cotizar por residencia titular*************** */
 
 const residencia=document.querySelector("#residencia")
 const residenciaAuto = residencia.onchange = () => {if(residencia.value === "CABA"){
-    let cotizarResi=factorResidenciaCaba*parseInt(valorComercial.value)
-    console.log(cotizarResi);
+        cotResiCABA()
 }else{
-    let cotizarResiDos=factorResidenciaPBA*parseInt(valorComercial.value)
-    console.log(cotizarResiDos);}};
-    
+        cotResiPBA()
+}
+}
+
+function cotResiCABA() { 
+        let cotizarResi=factorResidenciaCaba*parseInt(valorComercial.value)
+       return console.log(cotizarResi);
+        
+       
+    }
+    function cotResiPBA() {
+       let cotizarResiDos=factorResidenciaPBA*parseInt(valorComercial.value)
+       return console.log(cotizarResiDos);
+    }
+        
+/* console.log(cotizarResi);
+console.log(cotizarResiDos);
+ */
  
 
-let cotizacionTotal =""
-console.log(cotizacionTotal);
+/* let cotizacionTotal =cotizarResi+cotizarResiDos+cotizar+cotizarDos+cotizarKm+cotizarKmAlto
 
+console.log(cotizacionTotal);
+ */
 
 
 
