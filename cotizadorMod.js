@@ -92,6 +92,43 @@ for (const autos of modeloAutos) {
     
     };
 }
+/* Evento boton cotizar*********************** */
+
+let botonCoti = document.querySelector("#btn-cotizar")
+botonCoti.addEventListener("click", function(e){
+let kilometrosCalculo=kilometrosHechos()
+console.log(kilometrosCalculo);
+let fabricacionCalculo=fabricacionAnio()
+console.log(fabricacionCalculo);
+let guarderiaCalculo=guardaAuto();
+console.log(guarderiaCalculo);
+let residenciaCalculo =residenciaAuto()
+console.log(residenciaCalculo); 
+let totalCotizacionAuto=kilometrosCalculo+fabricacionCalculo+guarderiaCalculo+residenciaCalculo
+console.log(totalCotizacionAuto);
+let totalCotizacionAutoIva= totalCotizacionAuto*1.21
+console.log(totalCotizacionAutoIva);
+
+/* Mostrar cotizacion en DOM********* */
+
+    let capturaTarjeta = document.querySelector("#tarjeta")
+    let tarjeta = document.createElement("div")
+    tarjeta.innerHTML=
+                 `
+                <div class="card-body">
+                  <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Su cotizacion es de:</h6>
+                  <p class="card-text">Costo sin IVA $ :  ${totalCotizacionAuto}</p>
+                  <p class="card-text">Costo con IVA $ :  ${totalCotizacionAutoIva}</p>
+                  <a href="#contactenosTexto" class="card-link">Contactenos</a>
+                  <h2>¡Gracias por su visita!</h2>
+                </div> `
+        capturaTarjeta.appendChild(tarjeta)
+
+
+
+
+})
 
 
 let marcaElegida=document.querySelector("#marca")
@@ -99,7 +136,7 @@ let selectMarca = document.createElement("select")
 for (const autos of modeloAutos) {
     
     selectMarca.innerHTML+=`<option selected></option>
-    <option class="form-control col p-5" value='${autos.marca}'>${autos.marca}</option> `
+    <option class="form-control col p-5" value='${autos.marca}'>${autos.marca}</option>`
     marcaElegida.appendChild(selectMarca)
     marcaElegida.onchange = () => {console.log(selectMarca.value)};
     
@@ -149,18 +186,8 @@ function cotfabDos() {
 
 /* *****Cotizar por kilometros realizados*************** */
 
-let botonCoti = document.querySelector("#btn-cotizar")
-botonCoti.addEventListener("click", function(e){
-let kilometrosCalculo=kilometrosHechos()
-console.log(kilometrosCalculo);
-let fabricacionCalculo=fabricacionAnio()
-console.log(fabricacionCalculo);
+
     
-})
-    
-
-
-
 const kilometrosHechos = () => {
     const kilometros=document.querySelector("#kilometros")
     let total=0;
@@ -179,8 +206,6 @@ const kilometrosHechos = () => {
 function cotkm() {
     let cotizarKm=factorKm*parseInt(valorComercial.value)
     return (cotizarKm);
-    
-    
 }
 function cotkmAlto() {
     let cotizarKmAlto=factorKmAlto*parseInt(valorComercial.value)
@@ -188,19 +213,18 @@ function cotkmAlto() {
 }
 
 
-
-
-
 /* *****Cotizar por lugar donde guarda auto*************** */
 
-const guarderia=document.querySelector("#guarderia")
-const guardaAuto = guarderia.onchange = () => {if(guarderia.value === "garage"){
-    cotguardaG()
-}else{
-    cotguardaC()
+const guardaAuto = () => {
+    const guarderia=document.querySelector("#guarderia")
+    totalTres=0;
+    if(guarderia.value === "garage"){
+    totalTres=cotguardaG()
+}else{guarderia.value === "calle"
+    totalTres=cotguardaC()
 };
 
-
+    return totalTres
 }
 
 function cotguardaG() {
@@ -215,15 +239,19 @@ function cotguardaC() {
 
 /* *****Cotizar por residencia titular*************** */
 
-const residencia=document.querySelector("#residencia")
-const residenciaAuto = residencia.onchange = () => {if(residencia.value === "CABA"){
-        cotResiCABA()
+const residenciaAuto=() => {
+
+    const residencia=document.querySelector("#residencia")
+    totalCuatro=0;
+    if(residencia.value === "CABA"){
+        totalCuatro=cotResiCABA()
 }else{
-        cotResiPBA()
+        totalCuatro=cotResiPBA()
 }
+    return totalCuatro
 }
 
-function cotResiCABA() { 
+    function cotResiCABA() { 
         let cotizarResi=factorResidenciaCaba*parseInt(valorComercial.value)
        return (cotizarResi);
         
@@ -234,61 +262,3 @@ function cotResiCABA() {
        return (cotizarResiDos);
     }
         
-/* console.log(cotizarResi);
-console.log(cotizarResiDos);
- */
- 
-
-/* let cotizacionTotal =cotUno+cotDos+cotTres+cotCuatro
-
-console.log(cotizacionTotal); */
- 
-
-/* Mostrar cotizacion en DOM */
-    let capturaTarjeta = document.querySelector("#tarjeta")
-    let tarjeta = document.createElement("div")
-    tarjeta.innerHTML=
-                 `
-                <div class="card-body">
-                  <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
-                  <h6 class="card-subtitle mb-2 text-body-secondary">Su cotizacion es de:</h6>
-                  <p class="card-text">Costo sin IVA:</p>
-                  <p class="card-text">Costo con IVA:</p>
-                  <a href="#" class="card-link">Contactenos</a>
-                  <h2>¡Gracias por su visita!</h2>
-                </div> `
-        capturaTarjeta.appendChild(tarjeta)
-
-
-
-
-
-
-
-
-
-
-
-/* Logica calculo presupuesto */
-
-/* function ingreso(auto, marcaAuto) {
-    return auto.find((el) => el.modelo === marcaAuto);
-}
-let marcaComparada = ingreso(modeloAutos, marca);
-console.log(marcaComparada);
-*/
-
-/* 
-let altaGama=new Autos(true, false)
-
-if(marcaComparada.altaGama === true){
-    console.log(factorModelo=(valorComercial*0.003));
-    console.log("Alta gama");
-}else{
-    console.log(factorModelo=(valorComercial*0.002));
-    console.log("No gama");
-
-}
-
-     */
-    

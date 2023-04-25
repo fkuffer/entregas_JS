@@ -146,21 +146,22 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input id="nombre" type="text" class="form-control" placeholder="Nombre y apellido"
-                            aria-label="First name">
+                        <label class="form-label"for="">Ingrese nombre y apellido</label>
+                        <input id="nombre" type="text" class="form-control">
                     </div>
                     <div class="col">
-                        <input id="valor" type="text" class="form-control" placeholder="Valor comercial vehiculo"
-                            aria-label="Last name">
+                        <label class="form-label"for="">Ingrese valor comercial del vehiculo</label>
+                        <input id="valor" type="text" class="form-control">
                     </div>
                 </div>
 
                 <div class="row my-5">
                     <div class="col-6">  
-                         
+                        <label class="form-label"for="">Ingrese el modelo de vehiculo</label>
                         <div id="modelo"></div>
                     </div>
-                    <div class="col-6">   
+                    <div class="col-6">  
+                        <label class="form-label"for="">Ingrese la marca del vehiculo:</label> 
                         <div id="marca"></div>
                     </div>
                        
@@ -169,26 +170,28 @@
 
                 <div class="row my-5">
                     <div class="col">
-                        <input id="fabricacion" type="text" class="form-control" placeholder="Año de fabricacion">
+                        <label class="form-label"for="">Ingrese el año de fabricacion del vehiculo:</label>
+                        <input id="fabricacion" type="text" class="form-control">
                     </div>
                     <div class="col">
-                        <input id="kilometros" type="text" class="form-control" placeholder="Km realizados por mes">
+                        <label class="form-label"for="">Ingrese los kilometros mensuales que realiza:</label>
+                        <input id="kilometros" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="row my-5">
                     <div class="col">
-                        <select id="guarderia" class="form-select" aria-label="Default select example"
-                            aria-placeholder="Guarda vehiculo">
-                            <option selected>Guarderia vehiculo</option>
-                            <option value="garage">Garage</option>
-                            <option value="calle">Calle</option>
-
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select id="residencia" class="form-select" aria-label="Default select example"
-                            aria-placeholder="Residencia">
-                            <option selected>Residencia propietario</option>
+                        <label class="form-label"for="">Ingrese donde guarda su vehiculo:</label>
+                        <select id="guarderia" class="form-select">
+                        <option selected></option>
+                        <option value="garage">Garage</option>
+                        <option value="calle">Calle</option>
+                        
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label"for="">Ingrese su residencia real:</label>
+                    <select id="residencia" class="form-select">
+                    <option selected></option>
                             <option value="CABA">Ciudad buenos aires</option>
                             <option value="PBA">Provincia buenos aires</option>
 
