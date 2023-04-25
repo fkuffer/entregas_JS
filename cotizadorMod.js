@@ -33,16 +33,16 @@
 
 
 */
-let factorModelo = 0.01;
-let factorModeloGama = 0.02;
-let factorAnio = 0.01;
-let factorAnioNuevo = 0.02;
-let factorGuardaGarage = 0.01;
-let factorGuardaCalle = 0.02;
-let factorResidenciaCaba = 0.01;
-let factorResidenciaPBA = 0.02;
-let factorKm = 0.02;
-let factorKmAlto = 0.03;
+/* Variable factor calculo */
+
+let factorAnio = 0.001;
+let factorAnioNuevo = 0.002;
+let factorGuardaGarage = 0.001;
+let factorGuardaCalle = 0.002;
+let factorResidenciaCaba = 0.001;
+let factorResidenciaPBA = 0.002;
+let factorKm = 0.002;
+let factorKmAlto = 0.003;
 
 
 class Autos{
@@ -77,23 +77,22 @@ modeloAutos.push(new Autos ("CHEVROLET","BLAZER", true))
 modeloAutos.push(new Autos ("CHEVROLET","APACHE", false))
 
 
-/*****************Eventos del DOM *************** */
+/*****************Impresion modelo y marca en DOM *************** */
 
 let modeloElegido=document.querySelector("#modelo")
 let select = document.createElement("select")
 for (const autos of modeloAutos) {
     
-    select.innerHTML+=`<option selected></option>
-    <option class="form-control col p-5" value='${autos.modelo}  ${autos.altaGama}'>${autos.modelo}</option> `
+    select.innerHTML+=`<option class="form-select p-5"selected></option>
+    <option class="row form-control col-6 p-5" value='${autos.modelo}  ${autos.altaGama}'>${autos.modelo}</option> `
     modeloElegido.appendChild(select)
-    modeloElegido.onchange = () => {console.log(select.value)
+    modeloElegido.onchange = () => {console.log(select.value)}
         
+} 
     
-    
-    };
-}
-/* Evento boton cotizar*********************** */
 
+
+/* Evento boton cotizar*********************** */
 let botonCoti = document.querySelector("#btn-cotizar")
 botonCoti.addEventListener("click", function(e){
 let kilometrosCalculo=kilometrosHechos()
@@ -117,7 +116,7 @@ console.log(totalCotizacionAutoIva);
                  `
                 <div class="card-body">
                   <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
-                  <h6 class="card-subtitle mb-2 text-body-secondary">Su cotizacion es de:</h6>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Sr. ${nombre.value}  Su cotizacion es de:</h6>
                   <p class="card-text">Costo sin IVA $ :  ${totalCotizacionAuto}</p>
                   <p class="card-text">Costo con IVA $ :  ${totalCotizacionAutoIva}</p>
                   <a href="#contactenosTexto" class="card-link">Contactenos</a>
@@ -138,7 +137,7 @@ for (const autos of modeloAutos) {
     selectMarca.innerHTML+=`<option selected></option>
     <option class="form-control col p-5" value='${autos.marca}'>${autos.marca}</option>`
     marcaElegida.appendChild(selectMarca)
-    marcaElegida.onchange = () => {console.log(selectMarca.value)};
+    marcaElegida.onchange = () => {(selectMarca.value)};
     
 } 
 
