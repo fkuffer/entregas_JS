@@ -45,7 +45,7 @@ fetch('./datos/datos.json')
     data.forEach((post) => {
         let crear = document.createElement("option")
         crear.innerHTML = `
-            <h4 value=>${post.Modelo}</h4>
+            <h4 value="">${post.Modelo}</h4>
             `
         opcion.appendChild(crear)
     console.log(data);
