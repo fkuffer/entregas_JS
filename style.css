@@ -1,0 +1,34 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.imagen-logo{
+    width: 90px;
+}
+
+.img-auto{
+
+    max-width: 520px;
+    width: 100%;
+    
+
+    /* height: 70vh; */
+}
+
+.carousel-altura{
+    height: 2rem;
+}
+.texto-carrusel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: aliceblue;
+}
+.contenedor-clientes{
+    padding: 100px;
+    padding-left: 50px;
+}
