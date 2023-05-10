@@ -40,18 +40,46 @@
 fetch('./datos/datos.json')
 .then( (resp) => resp.json() )
 .then( (data) => {
+    
+    fabricacionAnio(data)
 
     const opcion = document.querySelector('#modelo')
     data.forEach((post) => {
         let crear = document.createElement("option")
-        crear.innerHTML = `
-            <h4 value="">${post.Modelo}</h4>
-            `
+        crear.innerHTML += `
+        <h4 value="">${post.Modelo}</h4>
+        `
         opcion.appendChild(crear)
-    console.log(data);
-    
+        
+        
     })
+
+    
+    let precioAuto=document.querySelector("#valor")
+    data.forEach(el => {
+        
+    let val = document.createElement("option")
+    
+    val.innerHTML += `
+        <h4 value="">${el.Precio}</h4>
+        `
+    precioAuto.appendChild(val) 
+
+    /* valorAuto(data) */
+    })
+
 })
+
+
+
+
+
+
+
+
+
+
+
 
 /* Variable factor calculo */
 
@@ -101,15 +129,7 @@ modeloAutos.push(new Autos("CHEVROLET", "APACHE", false))
 
 /*****************Impresion modelo y marca en DOM *************** */
 
-/* let select = document.createElement("select")
-let modeloElegido = document.querySelector("#modelo")
-for (const autos of modeloAutos) {
-    select.innerHTML += `<option class="form-select p-5"selected></option>
-    <option id="gama" class="modeloNuevo" value=>${autos.modelo}</option> `
-    modeloElegido.appendChild(select)
- */    /* modeloElegido.onchange = () => { console.log(select.value) } */
 
-/* } */
 
 
 
@@ -207,7 +227,16 @@ function mostrarOfertas() {
 }
      */
     
-    
+/* Valor comercial */
+
+/* const valorAuto = (precioCar) =>{
+     */
+
+   
+   
+
+
+
 
 /* Seleccion por modelo */
 
@@ -234,7 +263,7 @@ const modeloAltaGama=()=> {
 
     function modeloAltaG() {
 
-        let modeloAG = factorModeloGama*parseInt(valorComercial.value)
+        let modeloAG = factorModeloGama*(precioAuto)
     
         return (modeloAG)
     
@@ -244,16 +273,17 @@ const modeloAltaGama=()=> {
     
     function modeloNormal() {
     
-        let modeloNor = factorModelo*parseInt(valorComercial.value)
+        let modeloNor = factorModelo*precioAuto
+        console.log(precioAuto);
     
         return (modeloNor)
     
     }
     
      
-let valorComercial = document.querySelector("#valor")
+/* let valorComercial = document.querySelector("#valor")
 const valorInput = () => { console.log(valorComercial.value) };
-
+ */
 
 
 
@@ -264,30 +294,42 @@ const nombreApellido = nombre.onchange = () => { console.log(nombre.value) };
 
 
 /* *****Cotizar por Anio fabricacion*************** */
-const fabricacionAnio = () => {
+const fabricacionAnio = (fabAnio) => {
 
-    const fabricacion = document.querySelector("#fabricacion")
+    const fabricacionAnio=document.querySelector("#fabricacion")
+    fabAnio.forEach(el => {
+        
+        let fab = document.createElement("option")
+        fab.innerHTML += `
+            <h4 value="">${el.Año}</h4>
+            `
+        fabricacionAnio.appendChild(fab) 
+    });
+
+
+
+   
 
     let totalDos = 0;
 
-    if (parseInt(fabricacion.value) <= 2010) {
+    if (fabricacionAnio <= 2010) {
         totalDos = cotfab()
-
+        console.log("funciona");
 
     } else {
-        parseInt(fabricacion.value > 2010)
+        (fabricacionAnio > 2010)
         totalDos = cotfabDos()
     }
     return totalDos
 }
 
 function cotfab() {
-    let cotUno = factorAnio * parseInt(valorComercial.value)
+    let cotUno = factorAnio * precioAuto.value
     return (cotUno)
 
 }
 function cotfabDos() {
-    let cotDos = factorAnioNuevo * parseInt(valorComercial.value)
+    let cotDos = factorAnioNuevo * precioAuto.value
     return (cotDos)
 
 }
@@ -314,11 +356,11 @@ const kilometrosHechos = () => {
 
 
 function cotkm() {
-    let cotizarKm = factorKm * parseInt(valorComercial.value)
+    let cotizarKm = factorKm * precioAuto
     return (cotizarKm);
 }
 function cotkmAlto() {
-    let cotizarKmAlto = factorKmAlto * parseInt(valorComercial.value)
+    let cotizarKmAlto = factorKmAlto * precioAuto
     return (cotizarKmAlto);
 }
 
@@ -339,12 +381,12 @@ const guardaAuto = () => {
 }
 
 function cotguardaG() {
-    let cotizar = factorGuardaGarage * parseInt(valorComercial.value)
+    let cotizar = factorGuardaGarage * precioAuto
     return (cotizar);
 
 }
 function cotguardaC() {
-    let cotizarDos = factorGuardaCalle * parseInt(valorComercial.value)
+    let cotizarDos = factorGuardaCalle * precioAuto
     return (cotizarDos);
 }
 
@@ -363,13 +405,12 @@ const residenciaAuto = () => {
 }
 
 function cotResiCABA() {
-    let cotizarResi = factorResidenciaCaba * parseInt(valorComercial.value)
+    let cotizarResi = factorResidenciaCaba * precioAuto
     return (cotizarResi);
 
 
 }
 function cotResiPBA() {
-    let cotizarResiDos = factorResidenciaPBA * parseInt(valorComercial.value)
+    let cotizarResiDos = factorResidenciaPBA * precioAuto
     return (cotizarResiDos);
 }
-
