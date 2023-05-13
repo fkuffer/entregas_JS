@@ -23,10 +23,7 @@
 
     Criterios:
 
-<<<<<<< HEAD
  
-=======
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
     -Preguntar si guarda en garage o calle
     -Preguntar si es remis (Salir de cotizacion) o si es particular continuar.
     -Preguntar lugar de residencia( CABA o PBA)
@@ -37,7 +34,6 @@
 
 
 */
-<<<<<<< HEAD
 
 /* Obtener datos JSON */
 
@@ -58,7 +54,7 @@ async function cargaDatos() {
 const opcion = document.querySelector("#precios")
 
 function mostrarDom(lista) {
-    console.log(lista);
+    
     lista.forEach((post) => {
         let crear = document.createElement("option")
         crear.innerHTML += `<option value=""><br><h4>Modelo: </h4>${post.Modelo}  <h4>Año: </h4>${post.Año}  <h4>Precio: $</h4>${post.Precio}</option>`
@@ -69,8 +65,6 @@ function mostrarDom(lista) {
 cargaDatos()
 
 
-=======
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
 /* Variable factor calculo */
 
 let factorAnio = 0.001;
@@ -119,19 +113,6 @@ modeloAutos.push(new Autos("CHEVROLET", "APACHE", false))
 
 /*****************Impresion modelo y marca en DOM *************** */
 
-<<<<<<< HEAD
-
-=======
-let select = document.createElement("select")
-let modeloElegido = document.querySelector("#modelo")
-for (const autos of modeloAutos) {
-    select.innerHTML += `<option class="form-select p-5"selected></option>
-    <option id="gama" class="modeloNuevo" value=>${autos.modelo}</option> `
-    modeloElegido.appendChild(select)
-    /* modeloElegido.onchange = () => { console.log(select.value) } */
-
-}
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
 
 
 
@@ -151,9 +132,7 @@ botonCoti.addEventListener("click", function (e) {
     let totalCotizacionAuto = kilometrosCalculo + fabricacionCalculo + guarderiaCalculo + residenciaCalculo + modeloCalculado
     console.log(totalCotizacionAuto);
     let totalCotizacionAutoIva = totalCotizacionAuto * 1.21
-    console.log(totalCotizacionAutoIva);
-<<<<<<< HEAD
-    console.log(totalCotizacionAutoIva);
+    let descuentoHecho=totalCotizacionAutoIva*0.0001
     
    
     
@@ -173,22 +152,12 @@ botonCoti.addEventListener("click", function (e) {
         let tarjeta = document.createElement("div")
         tarjeta.innerHTML =
             `
-=======
-
-    /* Mostrar cotizacion en DOM********* */
-
-    let capturaTarjeta = document.querySelector("#tarjeta")
-    let tarjeta = document.createElement("div")
-    tarjeta.innerHTML =
-        `
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
                 <div class="card-body">
                   <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
                   <h6 class="card-subtitle mb-2 text-body-secondary">Sr. ${nombre.value}  Su cotizacion es de:</h6>
                   <p class="card-text">Costo sin IVA $ :  ${totalCotizacionAuto}</p>
                   <p class="card-text">Costo con IVA $ :  ${totalCotizacionAutoIva}</p>
                   <a href="#contactenosTexto" class="card-link">Contactenos</a>
-<<<<<<< HEAD
                   <p class="card-text">Agregue nuestras ofertas contra granizo y contra todo riesgo</p>
                   <h2>¡Gracias por su visita!</h2>
                   <h4>Si ya cotizaste aprovecha nuestras ofertas:</h4>
@@ -198,17 +167,27 @@ botonCoti.addEventListener("click", function (e) {
         capturaTarjeta.appendChild(tarjeta)
     }, 2000)
     
-
+    
     let descuento = document.querySelector("#off")
+    let descuentoUno = document.querySelector("#descuentoUno")
+    
     descuento=document.addEventListener("click", function () {
-        let descuentoUno = document.querySelector("#descuentoUno")
-    guardaDescuento= totalCotizacionAutoIva*0.001
     div= document.createElement('div')
-    div.innerHTML=`<h4>${guardaDescuento}</h4>`   
+    div.innerHTML=`<h4>${descuentoHecho}</h4>`   
     descuentoUno.appendChild(div)      
+    
      })
+   
 
 })
+
+
+/* Descuento dom */
+
+
+
+
+
 
 mostrarOfertas()
 
@@ -283,7 +262,7 @@ function mostrarOfertas() {
 
 for (const autos of modeloAutos) {
     let modeloElegido = document.querySelector("#modelo")
-    console.log(autos.modelo);
+    
     let select = document.createElement("option")
     select.innerHTML += `<option class="form-select p-5"></option>
     <option id="gama" class="modeloNuevo" value="${autos.modelo}">${autos.modelo}</option> `
@@ -337,59 +316,6 @@ function modeloNormal() {
 }
 
 
-=======
-                  <h2>¡Gracias por su visita!</h2>
-                </div> `
-    capturaTarjeta.appendChild(tarjeta)
-
-
-
-
-})
-
-/* Seleccion por modelo */
-
-const modeloAltaGama=()=> {
-
-    let vehiculoGama = document.querySelector("#gama")
-    
-        console.log(vehiculoGama.value);
-    
-        totalModelo=0;
-    
-        if(vehiculoGama.value === "Altagama"){
-    
-            totalModelo=modeloAltaG()
-    
-        }else{vehiculoGama.value === "Noaltagama"
-    
-            totalModelo=modeloNormal()
-    
-        }
-    
-        return (totalModelo)
-    }
-
-    function modeloAltaG() {
-
-        let modeloAG = factorModeloGama*parseInt(valorComercial.value)
-    
-        return (modeloAG)
-    
-    }
-    
-     
-    
-    function modeloNormal() {
-    
-        let modeloNor = factorModelo*parseInt(valorComercial.value)
-    
-        return (modeloNor)
-    
-    }
-    
-     
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
 let valorComercial = document.querySelector("#valor")
 const valorInput = () => { console.log(valorComercial.value) };
 
@@ -403,10 +329,6 @@ const nombreApellido = nombre.onchange = () => { console.log(nombre.value) };
 
 
 /* *****Cotizar por Anio fabricacion*************** */
-<<<<<<< HEAD
-
-=======
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
 const fabricacionAnio = () => {
 
     const fabricacion = document.querySelector("#fabricacion")
@@ -435,10 +357,6 @@ function cotfabDos() {
 
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
 /* *****Cotizar por kilometros realizados*************** */
 
 
@@ -460,19 +378,11 @@ const kilometrosHechos = () => {
 
 
 function cotkm() {
-<<<<<<< HEAD
     let cotizarKm = factorKm * valorComercial.value
     return (cotizarKm);
 }
 function cotkmAlto() {
     let cotizarKmAlto = factorKmAlto * valorComercial.value
-=======
-    let cotizarKm = factorKm * parseInt(valorComercial.value)
-    return (cotizarKm);
-}
-function cotkmAlto() {
-    let cotizarKmAlto = factorKmAlto * parseInt(valorComercial.value)
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
     return (cotizarKmAlto);
 }
 
@@ -493,20 +403,12 @@ const guardaAuto = () => {
 }
 
 function cotguardaG() {
-<<<<<<< HEAD
     let cotizar = factorGuardaGarage * valorComercial.value
-=======
-    let cotizar = factorGuardaGarage * parseInt(valorComercial.value)
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
     return (cotizar);
 
 }
 function cotguardaC() {
-<<<<<<< HEAD
     let cotizarDos = factorGuardaCalle * valorComercial.value
-=======
-    let cotizarDos = factorGuardaCalle * parseInt(valorComercial.value)
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
     return (cotizarDos);
 }
 
@@ -525,23 +427,12 @@ const residenciaAuto = () => {
 }
 
 function cotResiCABA() {
-<<<<<<< HEAD
     let cotizarResi = factorResidenciaCaba * valorComercial.value
-=======
-    let cotizarResi = factorResidenciaCaba * parseInt(valorComercial.value)
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
     return (cotizarResi);
 
 
 }
 function cotResiPBA() {
-<<<<<<< HEAD
     let cotizarResiDos = factorResidenciaPBA * valorComercial.value
     return (cotizarResiDos);
 }
-=======
-    let cotizarResiDos = factorResidenciaPBA * parseInt(valorComercial.value)
-    return (cotizarResiDos);
-}
-
->>>>>>> 0235cc25f7f2e5a2ed095bd41dd5d9a3786bef07
