@@ -37,48 +37,32 @@
 
 /* Obtener datos JSON */
 
-fetch('./datos/datos.json')
-.then( (resp) => resp.json() )
-.then( (data) => {
-    
-    fabricacionAnio(data)
+window.addEventListener('DOMContentLoaded', async () => {
 
-    const opcion = document.querySelector('#modelo')
-    data.forEach((post) => {
-        let crear = document.createElement("option")
-        crear.innerHTML += `
-        <h4 value="">${post.Modelo}</h4>
-        `
-        opcion.appendChild(crear)
-        
-        
-    })
-
-    
-    let precioAuto=document.querySelector("#valor")
-    data.forEach(el => {
-        
-    let val = document.createElement("option")
-    
-    val.innerHTML += `
-        <h4 value="">${el.Precio}</h4>
-        `
-    precioAuto.appendChild(val) 
-
-    /* valorAuto(data) */
-    })
+    const data = await cargaDatos()
+    mostrarDom(data);
 
 })
 
 
+async function cargaDatos() {
 
+    const response = await fetch('./datos/datos.json')
+    return await response.json()
+}
 
+const opcion = document.querySelector("#precios")
 
+function mostrarDom(lista) {
+    console.log(lista);
+    lista.forEach((post) => {
+        let crear = document.createElement("option")
+        crear.innerHTML += `<option value=""><br><h4>Modelo: </h4>${post.Modelo}  <h4>Año: </h4>${post.Año}  <h4>Precio: $</h4>${post.Precio}</option>`
+        opcion.appendChild(crear)
 
-
-
-
-
+    })
+}
+cargaDatos()
 
 
 /* Variable factor calculo */
@@ -150,21 +134,26 @@ botonCoti.addEventListener("click", function (e) {
     console.log(totalCotizacionAuto);
     let totalCotizacionAutoIva = totalCotizacionAuto * 1.21
     console.log(totalCotizacionAutoIva);
+    console.log(totalCotizacionAutoIva);
+    
+   
+    
     Swal.fire({
         title: 'Procesando datos!',
         text: 'En unos instantes vera su cotizacion!',
         icon: 'success',
         confirmButtonText: 'Aceptar'
-     })
+    })
 
-    
+   
+
     /* Mostrar cotizacion en DOM********* */
 
-    setTimeout(()=> {
-    let capturaTarjeta = document.querySelector("#tarjeta")
-    let tarjeta = document.createElement("div")
-    tarjeta.innerHTML =
-        `
+    setTimeout(() => {
+        let capturaTarjeta = document.querySelector("#tarjeta")
+        let tarjeta = document.createElement("div")
+        tarjeta.innerHTML =
+            `
                 <div class="card-body">
                   <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
                   <h6 class="card-subtitle mb-2 text-body-secondary">Sr. ${nombre.value}  Su cotizacion es de:</h6>
@@ -173,117 +162,155 @@ botonCoti.addEventListener("click", function (e) {
                   <a href="#contactenosTexto" class="card-link">Contactenos</a>
                   <p class="card-text">Agregue nuestras ofertas contra granizo y contra todo riesgo</p>
                   <h2>¡Gracias por su visita!</h2>
+                  <h4>Si ya cotizaste aprovecha nuestras ofertas:</h4>
+                    
                 </div> `
-                  
-    capturaTarjeta.appendChild(tarjeta)
-    }, 4000)
+
+        capturaTarjeta.appendChild(tarjeta)
+    }, 2000)
     
-   })
+
+    let descuento = document.querySelector("#off")
+    descuento=document.addEventListener("click", function () {
+        let descuentoUno = document.querySelector("#descuentoUno")
+    guardaDescuento= totalCotizacionAutoIva*0.001
+    div= document.createElement('div')
+    div.innerHTML=`<h4>${guardaDescuento}</h4>`   
+    descuentoUno.appendChild(div)      
+     })
+
+})
+
+mostrarOfertas()
 
 /* Evento de ofertas */
 
 /* let ofertas = document.querySelector("#ofertas")
 ofertas = document.addEventListener("click", function (e) {
-    e.preventDefault()
+    e.preventDefault()  
     mostrarOfertas()
-    
-})
+
+}) */
 
 function mostrarOfertas() {
-    
+
     const ingresoOfertas = document.querySelector("#muestra-ofertas")
-    ingresoOfertas.innerHTML=
+    let offer = document.createElement("div")
+    offer.innerHTML =
 
-    `
-    <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    </div>
-    
-    <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    </div>
+        `
+     <div class="container justify-content-center align-content-center grid gap-3 my-5">
+                <div class="row grid gap-5">
+                    <div class="card" style="width: 15rem;">
+                        <img src="imagenes/th.jpg" class="card-img-top p-2" alt="..." >
+                        <div class="card-body justify-content-center align-content-center">
+                            <h5 class="card-title">Cobertura por tormentas</h5>
+                            <p class="card-text my-5">Coberturas por tormentas solo por un 2% del total cotizado</p>
+                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5">Contratar</a>
+                        </div>
+                    </div>
 
-    <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    </div> 
+                    <div class="card" style="width: 15rem;">
+                        <img src="imagenes/granizo.jpg" class="img-fluid card-img-top p-2" style="height: 9rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Cobertura por granizo.</h5>
+                            <p class="card-text my-5">Cobertura por bandalizaciones solo por el 1,5% del total cotizado.</p>
+                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5">Contratar</a>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 15rem;">
+                        <img src="imagenes/electrico.jpg" class="card-img-top p-2"style="height: 9rem;" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Descuento auto-electrico</h5>
+                            <p class="card-text my-5">Tendra un descuento del 5% sobre el total de la cotizacion.</p>
+                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5">Contratar</a>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 15rem;">
+                        <img src="imagenes/inundacion.jpg" class="card-img-top p-2" style="height: 9rem;" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Cobertura por inundaciones.</h5>
+                            <p class="card-text my-5">Cobertura por bandalizaciones solo por el 2% del total cotizado</p>
+                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5" id="off">Contratar</a>
+                        </div>
+                    </div>
+                </div>
     `
-    
-    ingresoOfertas.appendChild(muestra-ofertas)
+
+    ingresoOfertas.appendChild(offer) 
 }
-     */
-    
-/* Valor comercial */
-
-/* const valorAuto = (precioCar) =>{
-     */
-
-   
-   
 
 
+ 
+
+
+
+
+ 
+
+/* Mostrar modelo en DOM */
+
+for (const autos of modeloAutos) {
+    let modeloElegido = document.querySelector("#modelo")
+    console.log(autos.modelo);
+    let select = document.createElement("option")
+    select.innerHTML += `<option class="form-select p-5"></option>
+    <option id="gama" class="modeloNuevo" value="${autos.modelo}">${autos.modelo}</option> `
+    modeloElegido.appendChild(select)
+
+
+}
 
 
 /* Seleccion por modelo */
 
-const modeloAltaGama=()=> {
+const modeloAltaGama = () => {
 
     let vehiculoGama = document.querySelector("#gama")
-    
-        console.log(vehiculoGama.value);
-    
-        totalModelo=0;
-    
-        if(vehiculoGama.value === "Altagama"){
-    
-            totalModelo=modeloAltaG()
-    
-        }else{vehiculoGama.value === "Noaltagama"
-    
-            totalModelo=modeloNormal()
-    
-        }
-    
-        return (totalModelo)
+
+    console.log(vehiculoGama.value);
+
+    totalModelo = 0;
+
+    if (vehiculoGama.value === "Altagama") {
+
+        totalModelo = modeloAltaG()
+
+    } else {
+        vehiculoGama.value === "Noaltagama"
+
+        totalModelo = modeloNormal()
+
     }
 
-    function modeloAltaG() {
+    return (totalModelo)
+}
 
-        let modeloAG = factorModeloGama*(precioAuto)
-    
-        return (modeloAG)
-    
-    }
-    
-     
-    
-    function modeloNormal() {
-    
-        let modeloNor = factorModelo*precioAuto
-        console.log(precioAuto);
-    
-        return (modeloNor)
-    
-    }
-    
-     
-/* let valorComercial = document.querySelector("#valor")
+function modeloAltaG() {
+
+    let modeloAG = factorModeloGama * parseInt(valorComercial.value)
+
+    return (modeloAG)
+
+}
+
+
+
+function modeloNormal() {
+
+    let modeloNor = factorModelo * parseInt(valorComercial.value)
+
+
+    return (modeloNor)
+
+}
+
+
+let valorComercial = document.querySelector("#valor")
 const valorInput = () => { console.log(valorComercial.value) };
- */
+
 
 
 
@@ -294,46 +321,34 @@ const nombreApellido = nombre.onchange = () => { console.log(nombre.value) };
 
 
 /* *****Cotizar por Anio fabricacion*************** */
-const fabricacionAnio = (fabAnio) => {
 
-    const fabricacionAnio=document.querySelector("#fabricacion")
-    fabAnio.forEach(el => {
-        
-        let fab = document.createElement("option")
-        fab.innerHTML += `
-            <h4 value="">${el.Año}</h4>
-            `
-        fabricacionAnio.appendChild(fab) 
-    });
+const fabricacionAnio = () => {
 
-
-
-   
+    const fabricacion = document.querySelector("#fabricacion")
 
     let totalDos = 0;
 
-    if (fabricacionAnio <= 2010) {
+    if (parseInt(fabricacion.value) <= 2010) {
         totalDos = cotfab()
-        console.log("funciona");
+
 
     } else {
-        (fabricacionAnio > 2010)
+        parseInt(fabricacion.value > 2010)
         totalDos = cotfabDos()
     }
     return totalDos
 }
 
 function cotfab() {
-    let cotUno = factorAnio * precioAuto.value
+    let cotUno = factorAnio * parseInt(valorComercial.value)
     return (cotUno)
 
 }
 function cotfabDos() {
-    let cotDos = factorAnioNuevo * precioAuto.value
+    let cotDos = factorAnioNuevo * parseInt(valorComercial.value)
     return (cotDos)
 
 }
-
 
 /* *****Cotizar por kilometros realizados*************** */
 
@@ -356,11 +371,11 @@ const kilometrosHechos = () => {
 
 
 function cotkm() {
-    let cotizarKm = factorKm * precioAuto
+    let cotizarKm = factorKm * valorComercial.value
     return (cotizarKm);
 }
 function cotkmAlto() {
-    let cotizarKmAlto = factorKmAlto * precioAuto
+    let cotizarKmAlto = factorKmAlto * valorComercial.value
     return (cotizarKmAlto);
 }
 
@@ -381,12 +396,12 @@ const guardaAuto = () => {
 }
 
 function cotguardaG() {
-    let cotizar = factorGuardaGarage * precioAuto
+    let cotizar = factorGuardaGarage * valorComercial.value
     return (cotizar);
 
 }
 function cotguardaC() {
-    let cotizarDos = factorGuardaCalle * precioAuto
+    let cotizarDos = factorGuardaCalle * valorComercial.value
     return (cotizarDos);
 }
 
@@ -405,12 +420,12 @@ const residenciaAuto = () => {
 }
 
 function cotResiCABA() {
-    let cotizarResi = factorResidenciaCaba * precioAuto
+    let cotizarResi = factorResidenciaCaba * valorComercial.value
     return (cotizarResi);
 
 
 }
 function cotResiPBA() {
-    let cotizarResiDos = factorResidenciaPBA * precioAuto
+    let cotizarResiDos = factorResidenciaPBA * valorComercial.value
     return (cotizarResiDos);
 }

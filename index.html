@@ -141,49 +141,24 @@
         </section>
         <section>
 
-            <div class="container justify-content-center align-content-center grid gap-3 my-5">
-                <div class="row grid gap-5">
-                    <div class="card" style="width: 15rem;">
-                        <img src="imagenes/th.jpg" class="card-img-top p-2" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cobertura por tormentas</h5>
-                            <p class="card-text">Coberturas por tormentas y granizo solo por un 2% del total cotizado</p>
-                            <a href="#" class="btn btn-primary">Contratar</a>
-                        </div>
-                    </div>
 
-                    <div class="card" style="width: 15rem;">
-                        <img src="imagenes/bandalizacion.jpg" class="card-img-top p-2 " alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cobertura por bandalizaciones.</h5>
-                            <p class="card-text">Cobertura por bandalizaciones solo por el 1,5% del total cotizado.</p>
-                            <a href="#" class="btn btn-primary">Contratar</a>
-                        </div>
-                    </div>
 
-                    <div class="card" style="width: 15rem;">
-                        <img src="imagenes/electrico.jpg" class="card-img-top p-2" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Descuento importante por auto-electrico</h5>
-                            <p class="card-text">Tendra un descuento del 5% sobre el total de la cotizacion.</p>
-                            <a href="#" class="btn btn-primary">Contratar</a>
-                        </div>
-                    </div>
 
-                    <div class="card" style="width: 15rem;">
-                        <img src="imagenes/inundacion.jpg" class="card-img-top p-2" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cobertura por inundaciones.</h5>
-                            <p class="card-text">Cobertura por bandalizaciones solo por el 2% del total cotizado</p>
-                            <a href="#" class="btn btn-primary">Contratar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="container">
                 <div class="cotizar my-5">
                     <h4 class="my-5">Cotizar vehiculo on-line</h4>
-                    <h3 class="my-3">Ingresar datos:</h3>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label" for="">Listado de precios vigentes:</label>
+                            <select class="form-select" name="" id="precios">
+                                <!-- Datos dinamicos -->
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <h3 class="my-5">Ingresar datos:</h3>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -192,19 +167,20 @@
                     </div>
                     <div class="col">
                         <label class="form-label" for="">Ingrese valor comercial del vehiculo</label>
-                        <select class="form-select" name="" id="valor">
-                            <!--  <input id="valor" type="text" class="form-control"> -->
-                        </select>
+                        <input id="valor" type="text" class="form-control">
+
+
                     </div>
                 </div>
 
                 <div class="row my-5">
                     <div class="col">
+
                         <label class="form-label" for="">Ingrese el modelo de vehiculo</label>
                         <select class="form-select" name="" id="modelo">
-                           <!-- Se completa dinamicamente -->
+                            <!-- Se completa dinamicamente -->
                         </select>
-                        
+
                     </div>
                     <div class="col">
                         <label class="form-label" for="">Ingrese la gama del vehiculo:</label>
@@ -241,16 +217,14 @@
                     <div class="row my-5">
                         <div class="col">
                             <label class="form-label" for="">Ingrese el año de fabricacion del vehiculo:</label>
-                            <select class="form-select" name="" id="fabricacion">
-                                <!-- Se completa dinamicamente -->
-                             </select>
+                            <input id="fabricacion" type="text" class="form-control">
                         </div>
                         <div class="col">
                             <label class="form-label" for="">Ingrese los kilometros mensuales que realiza:</label>
                             <input id="kilometros" type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="row my-5">
+                    <div class="row">
                         <div class="col">
                             <label class="form-label" for="">Ingrese donde guarda su vehiculo:</label>
                             <select id="guarderia" class="form-select">
@@ -272,26 +246,31 @@
                     </div>
                 </div>
 
-                <div class="d-grid  col-12 d-flex justify-content-center">
+                <div class="d-grid gap-2 col-3 mx-auto">
+
                     <button id="btn-cotizar" class="btn btn-primary" type="button">Cotizar</button>
                     
                 </div>
+            </div>
 
         </section>
         <section>
             <div class="container d-flex justify-content-center align-items-center my-5">
-                
-                <div id="tarjeta" class="card " style="width: 22rem;">
+
+                <div id="tarjeta" class="card ">
                     <!-- Contenido dinamico -->
                 </div>
+
                 
-                <button id="ofertas" class="btn btn-primary" type="button">Contratar</button>
-
             </div>
-            <div class="container" id="muestra-ofertas">
-
+            <div class="container" id="muestra-ofertas"><!-- 
+                <button id="ofertas" class="btn btn-primary" type="button">ofertas</button> -->
+                <!-- contenido dinamico -->
             </div>
-           
+            <div id="descuentoUno">
+                <!-- descuento -->
+            </div>
+
         </section>
         <section>
             <div class="container-lg  contenedor-clientes">
@@ -407,8 +386,8 @@
 
 
 
-    <script src="cotizador.js"></script>
-    <!-- <script src="cotizadorMod.js"></script> -->
+    <!--  <script src="cotizador.js"></script> -->
+    <script src="cotizadorMod.js"></script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

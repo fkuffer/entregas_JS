@@ -1,29 +1,42 @@
-fetch('./datos/datos.json')
-.then( (resp) => resp.json() )
-.then( (data) => {
-    
-    fabricacionAnio(data)
-    valorVehiculo(data)
 
-    const opcion = document.querySelector('#modelo')
-    data.forEach((post) => {
-        let crear = document.createElement("option")
-        crear.innerHTML += `
-        <h4 value="">${post.Modelo}</h4>
-        `
-        opcion.appendChild(crear)
-        
-        
-    })
-
+ window.addEventListener('DOMContentLoaded', async()=>{
     
+    const data = await cargaDatos()
+    mostrarDom(data);
     
-
 })
 
 
+ async function cargaDatos() {
+    
+    const response =await fetch('./datos/datos.json')
+    return await response.json()
+}
+    
+const opcion = document.querySelector("#precios")
 
-const fabricacionAnio = (fabAnio) => {
+function mostrarDom(lista) {
+    console.log(lista);
+    lista.forEach((post) => {
+        let crear = document.createElement("option")
+        crear.innerHTML += `<li value=""><br><h4>Modelo: </h4>${post.Modelo}<h4>Año: </h4>${post.Año}<h4>Precio: $</h4>${post.Precio}</li>`
+        opcion.appendChild(crear)
+    })
+} 
+cargaDatos()
+
+
+
+   
+
+
+
+    
+    
+
+
+
+/* const fabricacionAnio = (fabAnio) => {
 
     const fabricacionAnio=document.querySelector("#fabricacion")
     fabAnio.forEach(el => {
@@ -34,27 +47,15 @@ const fabricacionAnio = (fabAnio) => {
             `
         fabricacionAnio.appendChild(fab) 
     });
-}
-
-
-let precioAuto=document.querySelector("#valor")
-const valorVehiculo =(precioApi)=>{
-    precioApi.forEach(el => {
-        
-    let val = document.createElement("option")
-    
-    val.innerHTML += `
-        <h4 value="">${el.Precio}</h4>
-        `
-    precioAuto.appendChild(val) 
-
-    /* valorAuto(data) */
-    })
-    return (precioAuto)
 
 }
 
-console.log(precioAuto);
+
+ */
+
+
+
+/* console.log(precioAuto); */
 /* const precioLuego = document.querySelectorAll("#valor")
 console.log(precioLuego.value); */
 
