@@ -39,9 +39,9 @@
 
 window.addEventListener('DOMContentLoaded', async () => {
 
+
     const data = await cargaDatos()
     mostrarDom(data);
-
 })
 
 
@@ -54,7 +54,7 @@ async function cargaDatos() {
 const opcion = document.querySelector("#precios")
 
 function mostrarDom(lista) {
-    
+
     lista.forEach((post) => {
         let crear = document.createElement("option")
         crear.innerHTML += `<option value=""><br><h4>Modelo: </h4>${post.Modelo}  <h4>Año: </h4>${post.Año}  <h4>Precio: $</h4>${post.Precio}</option>`
@@ -62,7 +62,6 @@ function mostrarDom(lista) {
 
     })
 }
-cargaDatos()
 
 
 /* Variable factor calculo */
@@ -132,10 +131,11 @@ botonCoti.addEventListener("click", function (e) {
     let totalCotizacionAuto = kilometrosCalculo + fabricacionCalculo + guarderiaCalculo + residenciaCalculo + modeloCalculado
     console.log(totalCotizacionAuto);
     let totalCotizacionAutoIva = totalCotizacionAuto * 1.21
-    let descuentoHecho=totalCotizacionAutoIva*0.0001
-    
-   
-    
+    let descuentoHecho = totalCotizacionAutoIva + (totalCotizacionAutoIva * 0.02)
+    let descuentoHechoDos = totalCotizacionAutoIva + (totalCotizacionAutoIva * 0.015)
+    let descuentoHechoTres = totalCotizacionAutoIva - (totalCotizacionAutoIva * 0.05)
+    let descuentoHechoCuatro = totalCotizacionAutoIva - (totalCotizacionAutoIva * 0.02)
+
     Swal.fire({
         title: 'Procesando datos!',
         text: 'En unos instantes vera su cotizacion!',
@@ -143,14 +143,13 @@ botonCoti.addEventListener("click", function (e) {
         confirmButtonText: 'Aceptar'
     })
 
-   
+
 
     /* Mostrar cotizacion en DOM********* */
 
     setTimeout(() => {
         let capturaTarjeta = document.querySelector("#tarjeta")
-        let tarjeta = document.createElement("div")
-        tarjeta.innerHTML =
+        capturaTarjeta.innerHTML =
             `
                 <div class="card-body">
                   <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
@@ -164,49 +163,75 @@ botonCoti.addEventListener("click", function (e) {
                     
                 </div> `
 
-        capturaTarjeta.appendChild(tarjeta)
     }, 2000)
-    
-    
-    let descuento = document.querySelector("#off")
-    let descuentoUno = document.querySelector("#descuentoUno")
-    
-    descuento=document.addEventListener("click", function () {
-    div= document.createElement('div')
-    div.innerHTML=`<h4>${descuentoHecho}</h4>`   
-    descuentoUno.appendChild(div)      
-    
-     })
-   
+
+    let descuentoUno = document.querySelector("#offUno")
+    let descuentoOne = document.querySelector("#descuentoUno")
+    descuentoUno.addEventListener("click", function (e) {
+        e.preventDefault()
+        descuentoOne.innerHTML =
+            `
+        <div class="card-body">
+         <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
+         <p class="card-text">Sr. ${nombre.value} su nueva cotizacion con franquicia por tormentas es de $ :  ${descuentoHecho}</p>
+         <a href="#contactenosTexto" class="card-link">Contactenos</a>
+         <h2>¡Gracias por su visita!</h2>
+        </div> `
+
+    })
+    let descuentoDos = document.querySelector("#offDos")
+    let descuentoTwo = document.querySelector("#descuentoDos")
+    descuentoDos.addEventListener("click", function (e) {
+        e.preventDefault()
+        descuentoTwo.innerHTML =  `
+        <div class="card-body">
+          <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
+          <p class="card-text">Sr. ${nombre.value} su nueva cotizacion anti-granizo es de $ :  ${descuentoHechoDos}</p>
+          <a href="#contactenosTexto" class="card-link">Contactenos</a>
+          <h2>¡Gracias por su visita!</h2>
+        </div> `
+
+          
+    })
+
+    let descuentoTres = document.querySelector("#offTres")
+    let descuentoThree = document.querySelector("#descuentoTres")
+    descuentoTres.addEventListener("click", function (e) {
+        e.preventDefault()
+        descuentoThree.innerHTML =  `
+        <div class="card-body">
+          <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
+          <p class="card-text">Sr. ${nombre.value} cotizacion por auto-electrico es de $:  ${descuentoHechoTres}</p>
+          <a href="#contactenosTexto" class="card-link">Contactenos</a>
+          <h2>¡Gracias por su visita!</h2>
+        </div> `
+          
+    })
+
+    let descuentoCuatro = document.querySelector("#offCuatro")
+    let descuentoFour = document.querySelector("#descuentoCuatro")
+    descuentoCuatro.addEventListener("click", function (e) {
+        e.preventDefault()
+        descuentoFour.innerHTML = `
+        <div class="card-body">
+          <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
+          <p class="card-text">Sr. ${nombre.value} su nueva cotizacion por inundaciones es de $ : ${descuentoHechoCuatro}</p>
+          <a href="#contactenosTexto" class="card-link">Contactenos</a>
+          <h2>¡Gracias por su visita!</h2>
+        </div> `
+          
+
+    })
 
 })
 
 
-/* Descuento dom */
+/* Tarjetas de ofertas */
 
+const ingresoOfertas = document.querySelector("#muestra-ofertas")
+ingresoOfertas.innerHTML =
 
-
-
-
-
-mostrarOfertas()
-
-/* Evento de ofertas */
-
-/* let ofertas = document.querySelector("#ofertas")
-ofertas = document.addEventListener("click", function (e) {
-    e.preventDefault()  
-    mostrarOfertas()
-
-}) */
-
-function mostrarOfertas() {
-
-    const ingresoOfertas = document.querySelector("#muestra-ofertas")
-    let offer = document.createElement("div")
-    offer.innerHTML =
-
-        `
+    `
      <div class="container justify-content-center align-content-center grid gap-3 my-5">
                 <div class="row grid gap-5">
                     <div class="card" style="width: 15rem;">
@@ -214,7 +239,7 @@ function mostrarOfertas() {
                         <div class="card-body justify-content-center align-content-center">
                             <h5 class="card-title">Cobertura por tormentas</h5>
                             <p class="card-text my-5">Coberturas por tormentas solo por un 2% del total cotizado</p>
-                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5">Contratar</a>
+                            <button id="offUno" type="button" class="btn btn-primary" >Contratar</button>
                         </div>
                     </div>
 
@@ -223,7 +248,7 @@ function mostrarOfertas() {
                         <div class="card-body">
                             <h5 class="card-title">Cobertura por granizo.</h5>
                             <p class="card-text my-5">Cobertura por bandalizaciones solo por el 1,5% del total cotizado.</p>
-                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5">Contratar</a>
+                            <button id="offDos" type="button" class="btn btn-primary" >Contratar</button>
                         </div>
                     </div>
 
@@ -232,7 +257,7 @@ function mostrarOfertas() {
                         <div class="card-body">
                             <h5 class="card-title">Descuento auto-electrico</h5>
                             <p class="card-text my-5">Tendra un descuento del 5% sobre el total de la cotizacion.</p>
-                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5">Contratar</a>
+                            <button type="button" class="btn btn-primary" id="offTres">Contratar</button>
                         </div>
                     </div>
 
@@ -241,31 +266,20 @@ function mostrarOfertas() {
                         <div class="card-body">
                             <h5 class="card-title">Cobertura por inundaciones.</h5>
                             <p class="card-text my-5">Cobertura por bandalizaciones solo por el 2% del total cotizado</p>
-                            <a href="#" class="btn btn-primary d-flex justify-content-center mt-5" id="off">Contratar</a>
+                            <button type="button" class="btn btn-primary" id="offCuatro">Contratar</button>
                         </div>
                     </div>
                 </div>
     `
 
-    ingresoOfertas.appendChild(offer) 
-}
-
-
- 
-
-
-
-
- 
-
 /* Mostrar modelo en DOM */
 
 for (const autos of modeloAutos) {
     let modeloElegido = document.querySelector("#modelo")
-    
+
     let select = document.createElement("option")
     select.innerHTML += `<option class="form-select p-5"></option>
-    <option id="gama" class="modeloNuevo" value="${autos.modelo}">${autos.modelo}</option> `
+        <option id="gama" class="modeloNuevo" value="${autos.modelo}">${autos.modelo}</option> `
     modeloElegido.appendChild(select)
 
 
@@ -436,3 +450,13 @@ function cotResiPBA() {
     let cotizarResiDos = factorResidenciaPBA * valorComercial.value
     return (cotizarResiDos);
 }
+
+
+
+
+
+
+
+
+
+
