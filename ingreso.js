@@ -15,16 +15,17 @@ formularioIngreso.addEventListener("submit", function (e) {
     
     
         if(validacionUsuario && validacionPassword){
-            window.location.href='index.html'
-            return alert("ingreso exitoso")
+            const ingreso=document.querySelector("#registro-ok")
+            ingreso.innerHTML="Ingreso exitoso"
+            window.open('http://127.0.0.1:5503/index.html')
+            
+                
         }else{
-            alert("usuario incorrecto")
+            const ingresoMal=document.querySelector("#registro-no-ok")
+            ingresoMal.innerHTML="Usuario incorrecto"
         }
+        
 
     
 
-    
-    
-         
-    
 })

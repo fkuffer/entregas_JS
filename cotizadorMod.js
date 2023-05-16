@@ -63,6 +63,39 @@ function mostrarDom(lista) {
     })
 }
 
+/* Validacion campos vacio sin incio sesion */
+
+const nombre = document.querySelector("#nombre")
+console.log(nombre.value);
+/* const nombreApellido = nombre.onchange = () => { console.log(nombre.value) }; */
+const traerLocalst=JSON.parse(localStorage.getItem('usuarios'))
+nombre.onchange=()=>{
+for (const names of traerLocalst) {
+
+    const existe=traerLocalst.some(el=>el.nombreIngresado === nombre.value)
+    if(existe === true){
+        console.log("estas registrado continua");
+    }else{console.log("Para cotizar debes registrarte");}
+
+  
+}
+}
+
+Toastify({
+    text: "This is a toast",
+    duration: 3000,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "left", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    
+  }).showToast();
+
 
 /* Variable factor calculo */
 
@@ -153,12 +186,12 @@ botonCoti.addEventListener("click", function (e) {
             `
                 <div class="card-body">
                   <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
-                  <h6 class="card-subtitle mb-2 text-body-secondary">Sr. ${nombre.value}  Su cotizacion es de:</h6>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Sr. ${nombre.value} Su cotizacion es de:</h6>
                   <p class="card-text">Costo sin IVA $ :  ${totalCotizacionAuto}</p>
                   <p class="card-text">Costo con IVA $ :  ${totalCotizacionAutoIva}</p>
                   <a href="#contactenosTexto" class="card-link">Contactenos</a>
                   <p class="card-text">Agregue nuestras ofertas contra granizo y contra todo riesgo</p>
-                  <h2>¡Gracias por su visita!</h2>
+                  <h3>¡Gracias por su visita!</h3>
                   <h4>Si ya cotizaste aprovecha nuestras ofertas:</h4>
                     
                 </div> `
@@ -173,9 +206,9 @@ botonCoti.addEventListener("click", function (e) {
             `
         <div class="card-body">
          <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
-         <p class="card-text">Sr. ${nombre.value} su nueva cotizacion con franquicia por tormentas es de $ :  ${descuentoHecho}</p>
+         <p class="card-text">Sr. ${nombre.value} su nueva cotizacion con franquicia por tormentas es de $:  ${descuentoHecho}</p>
          <a href="#contactenosTexto" class="card-link">Contactenos</a>
-         <h2>¡Gracias por su visita!</h2>
+         <h3>¡Gracias por su visita!</h3>
         </div> `
 
     })
@@ -186,9 +219,9 @@ botonCoti.addEventListener("click", function (e) {
         descuentoTwo.innerHTML =  `
         <div class="card-body">
           <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
-          <p class="card-text">Sr. ${nombre.value} su nueva cotizacion anti-granizo es de $ :  ${descuentoHechoDos}</p>
+          <p class="card-text">Sr. ${nombre.value} su nueva cotizacion anti-granizo es de $:  ${descuentoHechoDos}</p>
           <a href="#contactenosTexto" class="card-link">Contactenos</a>
-          <h2>¡Gracias por su visita!</h2>
+          <h3>¡Gracias por su visita!</h3>
         </div> `
 
           
@@ -203,7 +236,7 @@ botonCoti.addEventListener("click", function (e) {
           <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
           <p class="card-text">Sr. ${nombre.value} cotizacion por auto-electrico es de $:  ${descuentoHechoTres}</p>
           <a href="#contactenosTexto" class="card-link">Contactenos</a>
-          <h2>¡Gracias por su visita!</h2>
+          <h3>¡Gracias por su visita!</h3>
         </div> `
           
     })
@@ -215,9 +248,9 @@ botonCoti.addEventListener("click", function (e) {
         descuentoFour.innerHTML = `
         <div class="card-body">
           <h5 class="card-title">Gracias por cotizar con nosotros!</h5>
-          <p class="card-text">Sr. ${nombre.value} su nueva cotizacion por inundaciones es de $ : ${descuentoHechoCuatro}</p>
+          <p class="card-text">Sr. ${nombre.value} su nueva cotizacion por inundaciones es de $: ${descuentoHechoCuatro}</p>
           <a href="#contactenosTexto" class="card-link">Contactenos</a>
-          <h2>¡Gracias por su visita!</h2>
+          <h3>¡Gracias por su visita!</h3>
         </div> `
           
 
@@ -336,8 +369,7 @@ const valorInput = () => { console.log(valorComercial.value) };
 
 
 
-const nombre = document.querySelector("#nombre")
-const nombreApellido = nombre.onchange = () => { console.log(nombre.value) };
+
 
 
 
