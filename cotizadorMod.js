@@ -35,6 +35,7 @@
 
 */
 
+
 /* Obtener datos JSON */
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -66,8 +67,6 @@ function mostrarDom(lista) {
 /* Validacion campos vacio sin incio sesion */
 
 const nombre = document.querySelector("#nombre")
-console.log(nombre.value);
-/* const nombreApellido = nombre.onchange = () => { console.log(nombre.value) }; */
 const traerLocalst=JSON.parse(localStorage.getItem('usuarios'))
 nombre.onchange=()=>{
 for (const names of traerLocalst) {
@@ -75,26 +74,20 @@ for (const names of traerLocalst) {
     const existe=traerLocalst.some(el=>el.nombreIngresado === nombre.value)
     if(existe === true){
         console.log("estas registrado continua");
-    }else{console.log("Para cotizar debes registrarte");}
+    }else{
+    swal.fire({
+        title: 'Error',
+        text:'Antes debe registrarse',
+        icon:'error',
+        confirmButtonText:'Aceptar'
 
+    })
+        }
   
 }
 }
 
-Toastify({
-    text: "This is a toast",
-    duration: 3000,
-    destination: "https://github.com/apvarun/toastify-js",
-    newWindow: true,
-    close: true,
-    gravity: "top", // `top` or `bottom`
-    position: "left", // `left`, `center` or `right`
-    stopOnFocus: true, // Prevents dismissing of toast on hover
-    style: {
-      background: "linear-gradient(to right, #00b09b, #96c93d)",
-    },
-    
-  }).showToast();
+
 
 
 /* Variable factor calculo */
@@ -272,7 +265,7 @@ ingresoOfertas.innerHTML =
                         <div class="card-body justify-content-center align-content-center">
                             <h5 class="card-title">Cobertura por tormentas</h5>
                             <p class="card-text my-5">Coberturas por tormentas solo por un 2% del total cotizado</p>
-                            <button id="offUno" type="button" class="btn btn-primary" >Contratar</button>
+                            <button id="offUno" type="button" class="btn btn-primary" >Cotizar</button>
                         </div>
                     </div>
 
@@ -281,7 +274,7 @@ ingresoOfertas.innerHTML =
                         <div class="card-body">
                             <h5 class="card-title">Cobertura por granizo.</h5>
                             <p class="card-text my-5">Cobertura por bandalizaciones solo por el 1,5% del total cotizado.</p>
-                            <button id="offDos" type="button" class="btn btn-primary" >Contratar</button>
+                            <button id="offDos" type="button" class="btn btn-primary" >Cotizar</button>
                         </div>
                     </div>
 
@@ -290,7 +283,7 @@ ingresoOfertas.innerHTML =
                         <div class="card-body">
                             <h5 class="card-title">Descuento auto-electrico</h5>
                             <p class="card-text my-5">Tendra un descuento del 5% sobre el total de la cotizacion.</p>
-                            <button type="button" class="btn btn-primary" id="offTres">Contratar</button>
+                            <button type="button" class="btn btn-primary" id="offTres">Cotizar</button>
                         </div>
                     </div>
 
@@ -299,7 +292,7 @@ ingresoOfertas.innerHTML =
                         <div class="card-body">
                             <h5 class="card-title">Cobertura por inundaciones.</h5>
                             <p class="card-text my-5">Cobertura por bandalizaciones solo por el 2% del total cotizado</p>
-                            <button type="button" class="btn btn-primary" id="offCuatro">Contratar</button>
+                            <button type="button" class="btn btn-primary" id="offCuatro">Cotizar</button>
                         </div>
                     </div>
                 </div>
